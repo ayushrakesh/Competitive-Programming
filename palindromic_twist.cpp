@@ -67,49 +67,51 @@ int main()
   int q;
   cin >> q;
 
-  for (int r = 0; r < q; r++)
+  while (q != 0)
   {
+
     int n;
     cin >> n;
     string s;
     cin >> s;
 
-    int l = n - 1;
+    int start = n / 2 - 1;
+    int end = n / 2;
 
-    for (int k = 0; k < n / 2; k++)
+    int count = 0;
+
+    for (int f = start; f >= 0; f--)
     {
-
       vector<char> v1;
       vector<char> v2;
-
       vector<string> w;
 
-      if (s[k] == 'a')
+      if (s[f] == 'a')
       {
         v1.push_back('b');
       }
-      else if (s[k] == 'z')
+      else if (s[f] == 'z')
       {
         v1.push_back('y');
       }
       else
       {
-        v1.push_back(s[k] + 1);
-        v1.push_back(s[k] - 1);
+        v1.push_back(s[f] + 1);
+        v1.push_back(s[f] - 1);
       }
 
-      if (s[l] == 'a')
+      if (s[end] == 'a')
       {
         v2.push_back('b');
       }
-      else if (s[l] == 'z')
+      else if (s[end] == 'z')
       {
         v2.push_back('y');
       }
       else
       {
-        v2.push_back(s[l] - 1);
-        v2.push_back(s[l] + 1);
+        v2.push_back(s[end] - 1);
+        v2.push_back(s[end] + 1);
       }
 
       // vector<string> w = {v[0] + v[2], v[0] + v[3], v[1] + v[2], v[1] + v[3]};
@@ -123,22 +125,24 @@ int main()
           w.push_back(s1 + s2);
         }
       }
-      bool boole = false;
+
+      // cout << w[0] << " " << w[1] << " " << w[2] << " " << w[3] << endl;
+
       for (int i = 0; i < w.size(); i++)
       {
         if (w[i].at(0) == w[i].at(1))
         {
-          cout << "YES" << endl;
+          count++;
           break;
-          boole = true;
         }
       }
-      if (!boole)
-      {
-        cout << "NO" << endl;
-      }
-
-      l--;
+      end++;
     }
+    if (count == n / 2)
+      cout << "YES" << endl;
+    else
+      cout << "NO" << endl;
+
+    q--;
   }
 }
