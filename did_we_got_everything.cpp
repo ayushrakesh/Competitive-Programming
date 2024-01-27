@@ -37,7 +37,7 @@ int main()
 
       isfirst = !isfirst;
     }
-    cout << s << endl;
+    // cout << s << endl;
 
     sort(s.begin(), s.end());
     sort(t.begin(), t.end());
@@ -79,11 +79,40 @@ int main()
       }
     }
 
-    string ans = "";
-
-    for (int q = 0; q < v.size(); q++)
+    if (v.size() == 0)
     {
-      ans = ans + v[i];
+      cout << "YES" << endl;
+      continue;
     }
+    cout << "NO" << endl;
+
+    string ans = "";
+    // bool ist = true;
+
+    for (int l = 0; l < n; l++)
+    {
+      // if (ist)
+      // {
+
+      for (int j = 0; j < v.size() && ans.length() < n; j++)
+      {
+        // char c = 97 + j;
+        ans = ans + v[j];
+      }
+
+      // }
+      // else
+      // {
+      // for (int j = v.size() - 1; j >= 0; j--)
+      // {
+      //   // char c = 97 + j;
+      //   ans = ans + v[j];
+      // }
+      // }
+
+      // ist = !ist;
+    }
+
+    cout << ans << endl;
   }
 }
