@@ -9,71 +9,13 @@ int main()
   for (int i = 0; i < cases; i++)
   {
 
-    int a, b;
+    long long a, b;
     cin >> a;
     cin >> b;
 
-    string chance = "Alice";
+    long long sum = a + b;
 
-    while (a != 0 || b != 0)
-    {
-
-      if (chance == "Alice")
-      {
-        if (a < b)
-        {
-          if (a == 0)
-          {
-            swap(a, b);
-            a--;
-            chance = "Bob";
-            continue;
-          }
-          a--;
-        }
-        else
-        {
-          if (b == 0)
-          {
-            a--;
-            chance = "Bob";
-            continue;
-          }
-          swap(a, b);
-          a--;
-        }
-        chance = "Bob";
-        continue;
-      }
-      if (chance == "Bob")
-      {
-        if (a < b)
-        {
-          if (a == 0)
-          {
-            b--;
-            chance = "Alice";
-            continue;
-          }
-          swap(a, b);
-          b--;
-        }
-        else
-        {
-          if (b == 0)
-          {
-            swap(a, b);
-            b--;
-            chance = "Alice";
-            continue;
-          }
-          b--;
-        }
-        chance = "Alice";
-        continue;
-      }
-    }
-    if (chance == "Alice")
+    if (sum % 2 == 0)
     {
       cout << "Bob" << endl;
     }
@@ -81,5 +23,5 @@ int main()
     {
       cout << "Alice" << endl;
     }
-    }
+  }
 }
