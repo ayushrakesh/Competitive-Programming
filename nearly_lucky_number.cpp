@@ -3,26 +3,37 @@ using namespace std;
 
 int main()
 {
-  int n;
+  long long n;
   cin >> n;
 
-  string s = to_string(n);
+  // string s = to_string(n);
   int lucky = 0;
 
-  for (int i = 0; i < s.length(); i++)
+  while (n != 0)
   {
-
-    if (s[i] == 52 || s[i] == 55)
+    /* code */
+    int ld = n % 10;
+    if (ld == 4 || ld == 7)
     {
       lucky++;
     }
+    n = n / 10;
   }
-  if (lucky == 4 || lucky == 7)
-  {
-    cout << "YES" << endl;
-  }
-  else
+
+  if (lucky == 0)
   {
     cout << "NO" << endl;
+    return 0;
   }
+  while (lucky != 0)
+  {
+    int t = lucky % 10;
+    if (!(t == 4 || t == 7))
+    {
+      cout << "NO" << endl;
+      return 0;
+    }
+    lucky = lucky / 10;
+  }
+  cout << "YES" << endl;
 }
