@@ -10,7 +10,7 @@ int main()
 
   for (int i = 0; i < s.length(); i++)
   {
-    if (s[i] >= 97 && s[i] <= 112)
+    if (s[i] >= 97 && s[i] <= 122)
       l++;
     else
     {
@@ -18,7 +18,7 @@ int main()
     }
   }
 
-  cout << c << " " << l << endl;
+  // cout << c << " " << l << endl;
   if (l >= c)
   {
     for (int i = 0; i < s.length(); i++)
@@ -33,7 +33,7 @@ int main()
   {
     for (int i = 0; i < s.length(); i++)
     {
-      if (s[i] >= 97 && s[i] <= 112)
+      if (s[i] >= 97 && s[i] <= 122)
       {
         s[i] = s[i] - 32;
       }
