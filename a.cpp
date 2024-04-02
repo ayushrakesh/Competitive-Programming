@@ -29,12 +29,38 @@ int main()
       cin >> a;
       v.push_back(a);
     }
-    int mini = *min_element(v.begin(), v.end());
 
-    if (isSorted(v))
+    int one = v[0];
+    int second = 0;
+
+    int cnt1 = 0, cnt2 = 0;
+    bool flag = false;
+
+    for (int i = 0; i < n; i++)
+    {
+      if (v[i] != one)
+      {
+        second = v[i];
+        break;
+        // second = v[i];
+      }
+    }
+
+    for (int i = 0; i < n; i++)
+    {
+      if (v[i] == one)
+      {
+        cnt1++;
+      }
+      else if (v[i] == second)
+      {
+        cnt2++;
+      }
+    }
+
+    if (cnt1 == n || cnt2 == n)
       cout << "YES" << endl;
-
-    else if (v[0] == mini)
+    else if (cnt1 + cnt2 == n && abs(cnt1 - cnt2) <= 1)
       cout << "YES" << endl;
     else
       cout << "NO" << endl;
