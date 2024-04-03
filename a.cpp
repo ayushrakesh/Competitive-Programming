@@ -18,49 +18,23 @@ int main()
 
   while (q--)
   {
-    int n;
-    cin >> n;
+    int n, k;
+    cin >> n >> k;
 
     vector<int> v;
     int a = 0;
-
-    for (int i = 0; i < n; i++)
-    {
-      cin >> a;
-      v.push_back(a);
-    }
-
-    int one = v[0];
-    int second = 0;
-
-    int cnt1 = 0, cnt2 = 0;
     bool flag = false;
 
     for (int i = 0; i < n; i++)
     {
-      if (v[i] != one)
-      {
-        second = v[i];
-        break;
-        // second = v[i];
-      }
+      cin >> a;
+
+      if (a == k)
+        flag = true;
+      v.push_back(a);
     }
 
-    for (int i = 0; i < n; i++)
-    {
-      if (v[i] == one)
-      {
-        cnt1++;
-      }
-      else if (v[i] == second)
-      {
-        cnt2++;
-      }
-    }
-
-    if (cnt1 == n || cnt2 == n)
-      cout << "YES" << endl;
-    else if (cnt1 + cnt2 == n && abs(cnt1 - cnt2) <= 1)
+    if (flag)
       cout << "YES" << endl;
     else
       cout << "NO" << endl;
