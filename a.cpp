@@ -18,25 +18,35 @@ int main()
 
   while (q--)
   {
-    int n, k;
-    cin >> n >> k;
+    int n;
+    cin >> n;
 
     vector<int> v;
     int a = 0;
     bool flag = false;
 
-    for (int i = 0; i < n; i++)
+    float pos = 0;
+    float neg = 0;
+
+    for (int i = 0; i < n - 1; i++)
     {
       cin >> a;
 
-      if (a == k)
-        flag = true;
+      if (a >= 0)
+        pos = pos + a;
+
+      else
+        neg = neg + a;
+      // if (a == k)
+      // flag = true;
       v.push_back(a);
     }
 
-    if (flag)
-      cout << "YES" << endl;
+    if (neg + pos != 0)
+    {
+      cout << -(neg + pos) << endl;
+    }
     else
-      cout << "NO" << endl;
+      cout << 0 << endl;
   }
 }
