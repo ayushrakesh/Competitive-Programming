@@ -18,35 +18,42 @@ int main()
 
   while (q--)
   {
-    int n;
-    cin >> n;
+    char c;
 
-    vector<int> v;
-    int a = 0;
-    bool flag = false;
+    int score = 0;
 
-    float pos = 0;
-    float neg = 0;
-
-    for (int i = 0; i < n - 1; i++)
+    for (int i = 1; i <= 10; i++)
     {
-      cin >> a;
+      for (int j = 1; j <= 10; j++)
+      {
+        /* code */
+        cin >> c;
 
-      if (a >= 0)
-        pos = pos + a;
-
-      else
-        neg = neg + a;
-      // if (a == k)
-      // flag = true;
-      v.push_back(a);
+        if (c == 'X')
+        {
+          if (i == 1 || j == 1 || i == 10 || j == 10)
+          {
+            score++;
+          }
+          else if (i == 2 || j == 2 || i == 9 || j == 9)
+          {
+            score += 2;
+          }
+          else if (i == 3 || j == 3 || i == 8 || j == 8)
+          {
+            score += 3;
+          }
+          else if (i == 4 || j == 4 || i == 7 || j == 7)
+          {
+            score += 4;
+          }
+          else
+          {
+            score += 5;
+          }
+        }
+      }
     }
-
-    if (neg + pos != 0)
-    {
-      cout << -(neg + pos) << endl;
-    }
-    else
-      cout << 0 << endl;
+    cout << score << endl;
   }
 }
