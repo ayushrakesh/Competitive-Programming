@@ -1,70 +1,42 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-bool isAllZero(vector<int> v)
-{
-
-  for (int i = 0; i < v.size(); i++)
-  {
-    if (v[i] != 0)
-      return false;
-  }
-  return true;
-}
-
-bool allAnyNeg(vector<int> v)
-{
-  for (int i = 0; i < v.size(); i++)
-  {
-    if (v[i] < 0)
-      return false;
-  }
-  return true;
-}
-bool can(vector<int> v)
-{
-  int n = v.size();
-  if (n <= 2)
-    return false;
-
-  int sum = 0;
-
-  for (int i = 0; i < n; i++)
-  {
-    sum += v[i];
-  }
-  if (sum % 2 != 0)
-    return false;
-
-  int maxi = *max_element(v.begin(), v.end());
-  if (maxi * 2 > sum)
-    return false;
-  else
-    return true;
-}
 int main()
 {
   int q = 0;
+
   cin >> q;
 
-  for (int t = 0; t < q; t++)
+  while (q--)
   {
-    int n;
-    cin >> n;
+    /* code */
+    int n, m;
+    cin >> n >> m;
+    string x;
+    cin >> x;
+    string s;
+    cin >> s;
+
+    int cnt = 0;
     bool flag = false;
 
-    vector<int> v;
-    int a = 0;
-
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < 10; i++)
     {
-      cin >> a;
-      v.push_back(a);
+      if (x.find(s) != string::npos)
+      {
+        cout << cnt << endl;
+        flag = true;
+        break;
+      }
+      else
+      {
+        cnt++;
+        x = x + x;
+      }
     }
-
-    if (can(v))
-      cout << "YES" << endl;
-    else
-      cout << "NO" << endl;
+    if (!flag)
+    {
+      cout << -1 << endl;
+    }
   }
 }
