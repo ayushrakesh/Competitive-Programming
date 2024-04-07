@@ -1,59 +1,72 @@
 #include <bits/stdc++.h>
 using namespace std;
-bool isSorted(vector<int> &v)
+
+bool isSorted(vector<long long> &v)
 {
+
   for (int i = 0; i < v.size() - 1; i++)
   {
     if (v[i] > v[i + 1])
+    {
       return false;
+    }
   }
   return true;
 }
 int main()
 {
-  // your code goes here
-
   int q = 0;
   cin >> q;
 
   while (q--)
   {
-    char c;
+    int n;
+    cin >> n;
+    vector<long long> v;
+    int a = 0;
 
-    int score = 0;
-
-    for (int i = 1; i <= 10; i++)
+    for (int i = 0; i < n; i++)
     {
-      for (int j = 1; j <= 10; j++)
-      {
-        /* code */
-        cin >> c;
+      cin >> a;
+      v.push_back(a);
+    }
+    bool flag = false;
+    long long diff = 0;
+    int index = -1;
 
-        if (c == 'X')
-        {
-          if (i == 1 || j == 1 || i == 10 || j == 10)
-          {
-            score++;
-          }
-          else if (i == 2 || j == 2 || i == 9 || j == 9)
-          {
-            score += 2;
-          }
-          else if (i == 3 || j == 3 || i == 8 || j == 8)
-          {
-            score += 3;
-          }
-          else if (i == 4 || j == 4 || i == 7 || j == 7)
-          {
-            score += 4;
-          }
-          else
-          {
-            score += 5;
-          }
-        }
+    for (int i = 1; i < n; i++)
+    {
+      if (v[i] < v[i - 1])
+      {
+        diff = v[i - 1] - v[i];
+        flag = true;
+        v[i] = v[i] + diff;
+        index = i;
+        break;
       }
     }
-    cout << score << endl;
+
+    if (index == n - 1 || index == -1)
+    {
+      cout << "YES" << endl;
+      continue;
+    }
+    if (flag)
+    {
+      for (int i = index + 2; i < n;)
+      {
+        v[i] = v[i] + diff;
+        i += 2;
+      }
+
+      if (isSorted(v))
+      {
+        cout << "YES" << endl;
+      }
+      else
+      {
+        cout << "NO" << endl;
+      }
+    }
   }
 }
