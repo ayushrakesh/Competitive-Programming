@@ -36,13 +36,10 @@ int main()
       {
         v[i] = v[i] * v[i + 1];
         cnt++;
-        v.erase(v.begin() + i + 1);
-        n--;
-
-        if (i == n - 1)
-        {
-          break;
-        }
+        v.erase(v.begin() + i);
+        // v.erase( i + 1);
+        i = 0;
+        // n--;
       }
       else
       {
