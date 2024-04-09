@@ -9,42 +9,59 @@ int main()
   while (q--)
   {
     int n;
-    cin >> n;
-    int b = 0;
+    long long k;
+    cin >> n >> k;
 
-    vector<int> v;
+    vector<long long> v;
+    int a = 0;
 
     for (int i = 0; i < n; i++)
     {
-      cin >> b;
-
-      v.push_back(b);
+      cin >> a;
+      v.push_back(a);
     }
+    int cnt = 0;
+    int j = n - 1;
 
-    vector<int> w;
-    w.push_back(v[0]);
-
-    for (int i = 1; i < n;)
+    for (int i = 0; k > 0 && j >= 0 && i < n;)
     {
-      if (v[i] >= v[i - 1])
+
+      if (v[i] <= k)
       {
-        w.push_back(v[i]);
+        cnt++;
+        k = k - v[i];
         i++;
       }
       else
       {
-        w.push_back(1);
-        w.push_back(v[i]);
-        i++;
+        k--;
+        v[i]--;
+        // i--;
       }
+      if (cnt == n)
+      {
+        break;
+      }
+      if (v[j] <= k)
+      {
+        cnt++;
+        k = k - v[j];
+        j--;
+      }
+      else
+      {
+        k--;
+        v[j]--;
+        // j++;
+      }
+
+      if (cnt == n)
+      {
+        break;
+      }
+      /* code */
     }
 
-    cout << w.size() << endl;
-
-    for (int i = 0; i < w.size(); i++)
-    {
-      cout << w[i] << " ";
-    }
-    cout << endl;
+    cout << cnt << endl;
   }
 }

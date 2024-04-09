@@ -3,15 +3,21 @@ using namespace std;
 
 int main()
 {
-  int n;
-  cin >> n;
-  int xxor = 0;
+  int q = 0;
+  cin >> q;
 
-  for (int i = 0; i < n; i++)
+  // char t = (char)2;
+
+  // cout << t << endl;
+  while (q--)
   {
-    int a = 0;
-    cin >> a;
-    xxor = xxor xor a;
+    int n, a, b;
+    cin >> n >> a >> b;
+
+    int f = n * a;
+
+    int s = (n / 2) * b + (n % 2) * a;
+
+    cout << min(f, s) << endl;
   }
-  cout << xxor << endl;
 }
