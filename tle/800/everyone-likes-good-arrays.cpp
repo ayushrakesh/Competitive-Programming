@@ -1,53 +1,32 @@
 #include <bits/stdc++.h>
 using namespace std;
+#define int long long
 
-int main()
+signed main()
 {
-  int q = 0;
-  cin >> q;
-
-  while (q--)
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+  int t;
+  cin >> t;
+  while (t--)
   {
-    /* code */
-    int n = 0;
+    // Take input
+    int n;
     cin >> n;
-
-    if (n == 1)
-    {
-      cout << 0 << endl;
-      continue;
-    }
-    // vector<int> v;
-    vector<long long> v;
-    int a = 0;
-
+    int a[n];
     for (int i = 0; i < n; i++)
     {
-      cin >> a;
-      v.push_back(a);
+      cin >> a[i];
     }
-    int i = 0;
-    int cnt = 0;
-
-    while (i < n - 1)
+    // initialize answer..
+    int ans = 0;
+    for (int i = 0; i + 1 < n; i++)
     {
-
-      if ((v[i] % 2 == 0 && v[i + 1] % 2 == 0) || (v[i] % 2 == 1 && v[i + 1] % 2 == 1))
-      {
-        v[i] = v[i] * v[i + 1];
-        cnt++;
-        v.erase(v.begin() + i);
-        // v.erase( i + 1);
-        i = 0;
-        // n--;
-      }
-      else
-      {
-        i++;
-      }
-
-      /* code */
+      ans += (!((a[i] ^ a[i + 1]) & 1));
+      /*XOR the two numbers and check 0th bit in the resultant, if it is 1
+      then, numbers are of different parity, otherwise both are of same parity*/
     }
-    cout << cnt << endl;
+    cout << ans << "\n";
   }
+  return 0;
 }
