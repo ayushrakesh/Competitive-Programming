@@ -6,18 +6,33 @@ int main()
   int q = 0;
   cin >> q;
 
-  // char t = (char)2;
-
-  // cout << t << endl;
   while (q--)
   {
-    int n, a, b;
-    cin >> n >> a >> b;
+    int n;
+    cin >> n;
 
-    int f = n * a;
+    vector<int> v;
 
-    int s = (n / 2) * b + (n % 2) * a;
+    int a = 0;
 
-    cout << min(f, s) << endl;
+    int cnt = 0;
+
+    for (int i = 0; i < n; i++)
+    {
+      cin >> a;
+      if (a == 2)
+      {
+        cnt++;
+      }
+    }
+
+    if (cnt % 8 == 0)
+    {
+      cout << "YES" << endl;
+    }
+    else
+    {
+      cout << "NO" << endl;
+    }
   }
 }

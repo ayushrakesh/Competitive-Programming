@@ -1,44 +1,48 @@
-#include <bits/stdc++.h>
-
+#include "bits/stdc++.h"
 using namespace std;
+
+void print(string printable)
+{
+  cout << printable << endl;
+}
 
 int main()
 {
-  int q = 0;
-  cin >> q;
+  ios::sync_with_stdio(0);
+  cin.tie(0);
 
-  while (q--)
+  int test_cases;
+  cin >> test_cases;
+
+  while (test_cases--)
   {
-    long long n, k;
-    cin >> n >> k;
+    long long n;
+    long long k;
+    cin >> n;
+    cin >> k;
 
     if (n % 2 == 0)
-      cout << "Yes" << endl;
-    else
     {
-
-      long long rem = n % k;
-      if (rem % 2 == 0)
-      {
-        cout << "YES" << endl;
-        continue;
-      }
-      else
-      {
-        cout << "NO" << endl;
-        continue;
-      }
-
-      if (1 % k == 0)
-      {
-        cout << "YES" << endl;
-        continue;
-      }
-      else
-      {
-        cout << "NO" << endl;
-        continue;
-      }
+      print("YES");
+      continue;
     }
+
+    if (n % k == 0)
+    {
+      print("YES");
+      continue;
+    }
+
+    bool yes = false;
+
+    // ! n is odd from here on out
+    if (!(k % 2 == 0))
+    { // ! k is odd
+      yes = true;
+    }
+
+    yes ? print("YES") : print("NO");
   }
+
+  return 0;
 }
