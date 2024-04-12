@@ -8,25 +8,53 @@ int main()
 
   while (q--)
   {
-    int n, m, k;
-    cin >> n >> m >> k;
+    int n;
+    cin >> n;
+    // int cnt = 0;
+    bool flag = false;
+    vector<int> v;
+    int a = 0;
+    map<int, int> mmp;
 
-    if (n == 1 || m == 1)
+    // // if (n == 1)
+    // {
+    //   cout << -1 << endl;
+    //   continue;
+    // }
+
+    for (int i = 0; i < n; i++)
     {
-      cout << "NO" << endl;
+      cin >> a;
+      v.push_back(a);
+
+      mmp[a]++;
     }
-    else if (k >= m)
+
+    if (mmp.size() == 1)
     {
-      cout << "NO" << endl;
+      cout << -1 << endl;
+      continue;
     }
-    else if (k < m)
+
+    int x = v[0];
+    int ix = 0;
+    int ans = n;
+
+    for (int i = 0; i < n; i++)
     {
-      // else if (k < m && m>=n){
-      cout << "YES" << endl;
+      if (v[i] == v[0])
+      {
+        ix++;
+      }
+      else
+      {
+        ans = min(ans, ix);
+        ix = 0;
+      }
     }
-    else
-    {
-      cout << "NO" << endl;
-    }
+
+    ans = min(ans, ix);
+
+    cout << ans << endl;
   }
 }
