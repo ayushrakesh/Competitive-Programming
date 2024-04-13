@@ -3,43 +3,59 @@ using namespace std;
 
 int main()
 {
-  int q = 0;
-  cin >> q;
+  int t = 0;
+  cin >> t;
 
-  while (q--)
+  while (t--)
   {
-    int n;
-    cin >> n;
-    // int cnt = 0;
-    bool flag = false;
+    int k, q;
+    cin >> k >> q;
+
     vector<int> v;
     int a = 0;
 
-    if (n == 1)
-    {
-      cout << -1 << endl;
-      continue;
-    }
-
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < k; i++)
     {
       cin >> a;
       v.push_back(a);
     }
+    vector<int> w;
 
-    for (int i = n - 1; i >= 1; i--)
+    for (int i = 0; i < q; i++)
     {
-      if (v[i] != v[i - 1])
+      cin >> a;
+      w.push_back(a);
+    }
+
+    vector<int> res;
+
+    for (int i = 0; i < q; i++)
+    {
+      int n = w[i];
+
+      while (v[0] <= n)
       {
-        cout << n - i << endl;
-        flag = true;
-        break;
+        int ans = 0;
+        for (int j = 0; j < k; j++)
+        {
+          if (v[j] <= n)
+          {
+            ans++;
+          }
+        }
+
+        n = n - ans;
+        /* code */
       }
+
+      res.push_back(n);
     }
 
-    if (!flag)
+    for (int o = 0; o < res.size(); o++)
     {
-      cout << -1 << endl;
+      cout << res[o] << " ";
     }
+
+    cout << endl;
   }
 }
